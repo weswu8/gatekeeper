@@ -1,0 +1,15 @@
+com/ecommerce/flashsales/InventoryValidationR.class
+com/ecommerce/flashsales/AddGoodsR.class
+com/ecommerce/flashsales/CurrentStep.class
+com/ecommerce/flashsales/FlashSalesAccessLogger$FlashSalesAccessLog.class
+com/ecommerce/flashsales/SafeValidationR.class
+com/ecommerce/flashsales/RateLimiter.class
+com/ecommerce/flashsales/ResourceNotFoundException.class
+com/ecommerce/flashsales/ClientErrorHandler.class
+com/ecommerce/flashsales/UnexpectedHttpException.class
+com/ecommerce/flashsales/ClientRequest.class
+com/ecommerce/flashsales/PolicyValidationR.class
+com/ecommerce/flashsales/GateKeeperApplication.class
+com/ecommerce/flashsales/GateKeeper.class
+com/ecommerce/flashsales/ClientResponse.class
+com/ecommerce/flashsales/FlashSalesAccessLogger.class
