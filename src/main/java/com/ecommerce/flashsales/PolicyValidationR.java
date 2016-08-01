@@ -17,7 +17,7 @@ public class PolicyValidationR implements Serializable {
 	public int orderQuantity;
 	public boolean isAllowed = true;
 	public boolean isThrottled = false;
-	
+	public String version = "1.0";
 	
 	public String getSessionID() {
 		return sessionID;
@@ -61,11 +61,18 @@ public class PolicyValidationR implements Serializable {
 	public void setIsThrottled(boolean isThrottled) {
 		this.isThrottled = isThrottled;
 	}
+	
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	@Override
 	public String toString() {
 		return "PolicyValidationR [sessionID=" + sessionID + ", userID=" + userID + ", goodsSKU=" + goodsSKU
 				+ ", userLevel=" + userLevel + ", orderQuantity=" + orderQuantity + ", isAllowed=" + isAllowed
-				+ ", isThrottled=" + isThrottled + "]";
+				+ ", isThrottled=" + isThrottled + ", version=" + version + "]";
 	}
 	
 	

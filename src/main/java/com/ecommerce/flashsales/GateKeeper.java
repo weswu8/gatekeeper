@@ -40,6 +40,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 @RequestMapping("/")
 public class  GateKeeper {
+	/*** indicate current version of this micro service ***/
+	public final String cVersion = "1.0";
+	
 	@Autowired
 	Environment environment;
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -80,6 +83,7 @@ public class  GateKeeper {
 		clientResponse.setReponseMsg(environment.getProperty(msgKey));
 		clientResponse.setRepResult(result);
 		clientResponse.setIsThrottled(isThrotted);
+		clientResponse.setVersion(cVersion);
 		return clientResponse;
     }
     /***

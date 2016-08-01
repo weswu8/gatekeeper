@@ -17,6 +17,7 @@ public class SafeValidationR implements Serializable{
 	public Boolean isBadIP = false;
 	public Boolean isAllowed = true;
 	public boolean isThrottled = false;
+	public String version = "1.0";
 	
 	public String getSessionID() {
 		return sessionID;
@@ -66,11 +67,17 @@ public class SafeValidationR implements Serializable{
 	public void setIsThrottled(boolean isThrottled) {
 		this.isThrottled = isThrottled;
 	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	@Override
 	public String toString() {
 		return "SafeValidationR [sessionID=" + sessionID + ", userID=" + userID + ", isBadGuy=" + isBadGuy
 				+ ", clientIP=" + clientIP + ", isBadIP=" + isBadIP + ", isAllowed=" + isAllowed + ", isThrottled="
-				+ isThrottled + "]";
-	}	
-
+				+ isThrottled + ", version=" + version + "]";
+	}
+	
 }

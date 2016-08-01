@@ -4,6 +4,8 @@ public class ClientResponse {
 	public String reponseMsg;
 	public Boolean repResult;
 	public Boolean isThrottled = false;
+	public String version = "1.0";
+
 	
 	public String getReponseMsg() {
 		return reponseMsg;
@@ -23,11 +25,17 @@ public class ClientResponse {
 	public void setIsThrottled(Boolean isThrottled) {
 		this.isThrottled = isThrottled;
 	}
+	
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	@Override
 	public String toString() {
 		return "ClientResponse [reponseMsg=" + reponseMsg + ", repResult=" + repResult + ", isThrottled=" + isThrottled
-				+ "]";
+				+ ", version=" + version + "]";
 	}
-	
 	
 }
