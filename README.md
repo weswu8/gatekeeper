@@ -5,6 +5,8 @@ Flash sale becomes more and more popular among the ecommerce platforms. but ther
 The objective of the flash sales system is to handle the massive customer requests, filter the traffic based on the business logic ,and protect the back end system.  In order to get more scalability , all this micro service can deployed on Docker.
 闪购平台的目标在于能够处理前端大量的请求，按照业务要求请这些请求逐级过滤，并能够很好的保护后端的系统，避免后端系统被巨量的请求压垮。
 
+感谢马利超同学的分享,这个DEMO的许多想法源于此。
+
 Micro Service
 ====
 #####GateKeeper Service
