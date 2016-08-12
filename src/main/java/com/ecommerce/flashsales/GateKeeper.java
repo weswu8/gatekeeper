@@ -106,11 +106,14 @@ public class  GateKeeper {
 			safeValidationR = restTemplate.getForObject(safeprotectorBaseUrl+"validate/sid/{sid}/userid/{userid}/clientip/{clientip}",SafeValidationR.class,params);
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
+        	logger.info(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
+        	logger.info(uEx.toString());
 			return rList;
 		} catch (ResourceAccessException rEx){
+        	logger.info(rEx.toString());
 			rList.set(0, true);
 			return rList;
 		}
@@ -301,18 +304,18 @@ public class  GateKeeper {
         resultList = doSafeValidation(restTemplate, clientRequest);
         if (resultList.get(0) == true){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SAFEPROTECTOR.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("safeprotector.exception.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SAFEPROTECTOR.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(2) == true) {
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SAFEPROTECTOR.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("shoppingcart.dothrotting.msg", false, true);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SAFEPROTECTOR.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(1) == false){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SAFEPROTECTOR.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("safeprotector.failed.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SAFEPROTECTOR.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } 
 		clientResponse = setClientResponse("safeprotector.successed.msg", true, false);
@@ -324,18 +327,18 @@ public class  GateKeeper {
         resultList = doPolicyValidation(restTemplate, clientRequest);
         if (resultList.get(0) == true){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.POLICYCONTROLLER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
             clientResponse = setClientResponse("policycontroller.exception.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.POLICYCONTROLLER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(2) == true) {
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.POLICYCONTROLLER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("shoppingcart.dothrotting.msg", false, true);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.POLICYCONTROLLER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(1) == false){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.POLICYCONTROLLER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("policycontroller.failed.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.POLICYCONTROLLER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         }
 		clientResponse = setClientResponse("policycontroller.successed.msg", true, false);
@@ -347,18 +350,18 @@ public class  GateKeeper {
         resultList = doInventoryValidation(restTemplate, clientRequest);
         if (resultList.get(0) == true){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.INVENTORYMANAGER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("inventorymanager.exception.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.INVENTORYMANAGER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(2) == true) {
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.INVENTORYMANAGER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("shoppingcart.dothrotting.msg", false, true);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.INVENTORYMANAGER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(1) == false){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.INVENTORYMANAGER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
             clientResponse = setClientResponse("inventorymanager.failed.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.INVENTORYMANAGER.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         }
 		clientResponse = setClientResponse("inventorymanager.successed.msg", true, false);
@@ -370,19 +373,19 @@ public class  GateKeeper {
         resultList = doAddGoodToCart(restTemplate, clientRequest);
         if (resultList.get(0) == true){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SHOPPINGCART.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("shoppingcart.exception.msg", false, false);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SHOPPINGCART.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(2) == true) {
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SHOPPINGCART.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("shoppingcart.dothrotting.msg", false, true);
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SHOPPINGCART.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	return clientResponse;
         } else if (resultList.get(1) == false){
         	stepEndTime = System.currentTimeMillis();
-            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SHOPPINGCART.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
         	clientResponse = setClientResponse("shoppingcart.failed.msg", false, false);
-        	return clientResponse;
+            fsAccessLogger.doAccessLog(httpRequest, httpResponse, clientRequest.getSessionID(), CurrentStep.SHOPPINGCART.msgBody(), mapper.writeValueAsString(clientRequest), stepEndTime - stepStartTime, clientResponse);
+            return clientResponse;
         }
         clientResponse = setClientResponse("shoppingcart.successed.msg", true, false);
         stepEndTime = System.currentTimeMillis();
