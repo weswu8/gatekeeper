@@ -103,7 +103,9 @@ public class  GateKeeper {
 			params.put("sid", clientRequest.getSessionID());
 			params.put("clientip", clientRequest.getClientIP());
 			params.put("userid", clientRequest.getUserID());
+			logger.error("1");
 			safeValidationR = restTemplate.getForObject(safeprotectorBaseUrl+"validate/sid/{sid}/userid/{userid}/clientip/{clientip}",SafeValidationR.class,params);
+			logger.error(safeValidationR.toString());
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
         	logger.error(nEx.toString());
