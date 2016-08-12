@@ -106,14 +106,14 @@ public class  GateKeeper {
 			safeValidationR = restTemplate.getForObject(safeprotectorBaseUrl+"validate/sid/{sid}/userid/{userid}/clientip/{clientip}",SafeValidationR.class,params);
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
-        	logger.info(nEx.toString());
+        	logger.error(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
-        	logger.info(uEx.toString());
+        	logger.error(uEx.toString());
 			return rList;
 		} catch (ResourceAccessException rEx){
-        	logger.info(rEx.toString());
+        	logger.error(rEx.toString());
 			rList.set(0, true);
 			return rList;
 		}
