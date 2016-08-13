@@ -45,7 +45,7 @@ public class  GateKeeper {
 	
 	@Autowired
 	Environment environment;
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger("SystemLog");
     @Value("${safeprotector.url}")
     private String safeprotectorBaseUrl;
     @Value("${policycontroller.url}")
@@ -103,20 +103,20 @@ public class  GateKeeper {
 			params.put("sid", clientRequest.getSessionID());
 			params.put("clientip", clientRequest.getClientIP());
 			params.put("userid", clientRequest.getUserID());
-			logger.error("1");
-			safeValidationR = restTemplate.getForObject(safeprotectorBaseUrl+"validate/sid/{sid}/userid/{userid}/clientip/{clientip}",SafeValidationR.class,params);
-			logger.error(safeValidationR.toString());
+			safeValidationR = restTemplate.getForObject(safeprotectorBaseUrl+"/validate/sid/{sid}/userid/{userid}/clientip/{clientip}",SafeValidationR.class,params);
+			System.out.println(safeValidationR.toString());
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
         	logger.error(nEx.toString());
+        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
-        	logger.error(uEx.toString());
+			logger.error(uEx.toString());
 			return rList;
 		} catch (ResourceAccessException rEx){
-        	logger.error(rEx.toString());
 			rList.set(0, true);
+			logger.error(rEx.toString());
 			return rList;
 		}
 		if (safeValidationR.getIsThrottled() == true){
@@ -152,12 +152,16 @@ public class  GateKeeper {
 			policyValidationR = restTemplate.getForObject(policycontrollerBaseUrl+"/validate/sid/{sid}/userid/{userid}/userlv/{userlv}/sku/{sku}/quantity/{quantity}",PolicyValidationR.class,params);
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
+        	logger.error(nEx.toString());
+        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
+			logger.error(uEx.toString());
 			return rList;
 		} catch (ResourceAccessException rEx){
 			rList.set(0, true);
+			logger.error(rEx.toString());
 			return rList;
 		}
 		if (policyValidationR.getIsThrottled() == true){
@@ -191,12 +195,16 @@ public class  GateKeeper {
 			inventoryValidationR = restTemplate.getForObject(inventorymanagerBaseUrl+"/validate/sid/{sid}/sku/{sku}/quantity/{quantity}",InventoryValidationR.class,params);
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
+        	logger.error(nEx.toString());
+        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
+			logger.error(uEx.toString());
 			return rList;
 		} catch (ResourceAccessException rEx){
 			rList.set(0, true);
+			logger.error(rEx.toString());
 			return rList;
 		}
 		/*** the request is throttled ***/
@@ -242,12 +250,16 @@ public class  GateKeeper {
         	addGoodsR = restTemplate.postForObject(shoppingcartBaseUrl+"/add", entity, AddGoodsR.class);            
         } catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
+        	logger.error(nEx.toString());
+        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
+			logger.error(uEx.toString());
 			return rList;
 		} catch (ResourceAccessException rEx){
 			rList.set(0, true);
+			logger.error(rEx.toString());
 			return rList;
 		}
         /*** add goods to cart successfully ***/
