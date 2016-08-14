@@ -104,11 +104,9 @@ public class  GateKeeper {
 			params.put("clientip", clientRequest.getClientIP());
 			params.put("userid", clientRequest.getUserID());
 			safeValidationR = restTemplate.getForObject(safeprotectorBaseUrl+"/validate/sid/{sid}/userid/{userid}/clientip/{clientip}",SafeValidationR.class,params);
-			System.out.println(safeValidationR.toString());
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
         	logger.error(nEx.toString());
-        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
@@ -153,7 +151,6 @@ public class  GateKeeper {
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
         	logger.error(nEx.toString());
-        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
@@ -196,7 +193,6 @@ public class  GateKeeper {
 		} catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
         	logger.error(nEx.toString());
-        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
@@ -251,7 +247,6 @@ public class  GateKeeper {
         } catch (ResourceNotFoundException nEx) {
         	rList.set(0, true);
         	logger.error(nEx.toString());
-        	System.out.println(nEx.toString());
         	return rList;
 		} catch (UnexpectedHttpException uEx){
 			rList.set(0, true);
