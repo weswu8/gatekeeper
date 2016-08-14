@@ -15,6 +15,7 @@ public class PolicyValidationR implements Serializable {
 	public String goodsSKU;
 	public int userLevel;
 	public int orderQuantity;
+	public int quantityLimit;
 	public boolean isAllowed = true;
 	public boolean isThrottled = false;
 	public String version = "1.0";
@@ -48,6 +49,12 @@ public class PolicyValidationR implements Serializable {
 	}
 	public void setOrderQuantity(int orderQuantity) {
 		this.orderQuantity = orderQuantity;
+	}	
+	public int getQuantityLimit() {
+		return quantityLimit;
+	}
+	public void setQuantityLimit(int quantityLimit) {
+		this.quantityLimit = quantityLimit;
 	}
 	public boolean getIsAllowed() {
 		return isAllowed;
@@ -71,8 +78,8 @@ public class PolicyValidationR implements Serializable {
 	@Override
 	public String toString() {
 		return "PolicyValidationR [sessionID=" + sessionID + ", userID=" + userID + ", goodsSKU=" + goodsSKU
-				+ ", userLevel=" + userLevel + ", orderQuantity=" + orderQuantity + ", isAllowed=" + isAllowed
-				+ ", isThrottled=" + isThrottled + ", version=" + version + "]";
+				+ ", userLevel=" + userLevel + ", orderQuantity=" + orderQuantity + ", quantityLimit=" + quantityLimit
+				+ ", isAllowed=" + isAllowed + ", isThrottled=" + isThrottled + ", version=" + version + "]";
 	}
 	
 	

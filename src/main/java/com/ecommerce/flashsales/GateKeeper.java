@@ -58,7 +58,10 @@ public class  GateKeeper {
 	/*** rate limiter setting ***/
     @Value("${ratelimiter.consumeCount}")
 	public double consumeCount;
+    /*** in order to reduce the number of API calls, should pass key parametes to next service ***/
+    /*** these two parameters will be passed to shopping cart service ***/
     public int totalQuantity = 0;
+    public int quantityLimit = 0;
 
     /***
      * customize the HTTP connection configuration.
@@ -161,11 +164,13 @@ public class  GateKeeper {
 			logger.error(rEx.toString());
 			return rList;
 		}
+		/*** the request is throttled ***/
 		if (policyValidationR.getIsThrottled() == true){
 			rList.set(1, false);
 			rList.set(2, true);
-        }else{
+        }else{/*** the request is allowed ***/
         	if (policyValidationR.getIsAllowed() == true){
+        		quantityLimit = policyValidationR.getQuantityLimit();
         		rList.set(1, true);
     			rList.set(2, false);
         	}
@@ -236,6 +241,7 @@ public class  GateKeeper {
         mJSON.put("goodsSKU", clientRequest.getGoodsSKU());
         mJSON.put("goodsQuantity", clientRequest.getGoodsQuantity());
         mJSON.put("totalQuantity", totalQuantity);
+        mJSON.put("quantityLimit", quantityLimit);
 
         // set headers
         HttpHeaders headers = new HttpHeaders();
