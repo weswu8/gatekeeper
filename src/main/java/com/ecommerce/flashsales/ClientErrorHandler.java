@@ -11,7 +11,7 @@ import org.springframework.web.client.ResponseErrorHandler;
 public class ClientErrorHandler implements ResponseErrorHandler
 {
    
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger("SystemLog");
 
 	@Override
 	public void handleError(ClientHttpResponse response) throws IOException 
