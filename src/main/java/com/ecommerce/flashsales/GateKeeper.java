@@ -21,6 +21,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -284,7 +285,8 @@ public class  GateKeeper {
      * @throws ParseException 
      * @throws NoSuchAlgorithmException 
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "/buy", headers = "Accept=application/json")
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/buy", headers = "Accept=application/json")
     public ClientResponse doBuyTheGoods(HttpServletRequest httpRequest, HttpServletResponse httpResponse, @RequestBody ClientRequest clientRequest) throws JsonProcessingException {
     	ArrayList<Boolean> resultList = new ArrayList<Boolean>();
     	ClientResponse clientResponse = new ClientResponse();
