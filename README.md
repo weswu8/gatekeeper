@@ -37,7 +37,9 @@ System Architecture
 
 Service API
 ====
-To-do
+|Path    | Method      |  Request Body                  |  Response Body           |
+|--------|-------------|--------------------------------|--------------------------|
+|/buy    | POST        | {"sessionID":"xxxx","clientIP":"202.100.100.1","userID":"UID0000000001","userLevel":5,"goodsSKU":"SKU0001","goodsQuantity":1}|{"reponseMsg": "Bad guy! Bye-Bye!","repResult": false,"isThrottled": false,"version": "1.0"}|
 
 Performance
 ====
