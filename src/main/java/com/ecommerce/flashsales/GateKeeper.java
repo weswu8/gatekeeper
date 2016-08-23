@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.junit.experimental.theories.Theories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +43,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/")
 public class  GateKeeper {
 	/*** indicate current version of this micro service ***/
-	public final String cVersion = "1.1";
+	public final String cVersion = "1.0";
 	
 	@Autowired
 	Environment environment;
-	private final Logger logger = LoggerFactory.getLogger("SystemLog");
+	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
     @Value("${safeprotector.url}")
     private String safeprotectorBaseUrl;
     @Value("${policycontroller.url}")
