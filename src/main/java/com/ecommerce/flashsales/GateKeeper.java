@@ -43,7 +43,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/")
 public class  GateKeeper {
 	/*** indicate current version of this micro service ***/
-	public final String cVersion = "1.1";
+	public final String cVersion = "1.0";
 	
 	@Autowired
 	Environment environment;
